@@ -1,0 +1,85 @@
+conky.config = {
+  use_spacer = 'left',
+  pad_percents = 3,
+  background = true,
+  double_buffer = true,
+  draw_shades = true,
+  font = 'Migu 1M DejaVu Sans Mono:bold:size=11',
+  use_xft = true,
+  alignment = 'top_right',
+  gap_x = 0,
+  gap_y = 40,
+  own_window_argb_visual = true,
+  own_window_argb_value = 50,
+  own_window_type = 'normal',
+  own_window_hints = 'undecorated,below,skip_taskbar,skip_pager,sticky',
+  own_window = true,
+  update_interval = 3.0,
+}
+
+conky.text = [[
+${color orange}Hostname: ${color}${nodename}
+${color orange}Kernel:   ${color}${sysname} ${kernel} on ${machine}
+${color orange}Uptime:   ${color}${uptime}
+${exec /usr/lib/update-notifier/apt-check --human-readable}
+${hr}
+${color orange}CPU:${color} ${freq_g} GHz
+${color orange}CPU Temp:${color} ${execi 5 sensors | grep Tctl | cut -c 15-19} ℃
+${color orange}CPU usage:${color} ${cpu}%
+${color orange} 1:${color} ${cpu cpu1}% ${cpubar cpu1}
+${color orange} 2:${color} ${cpu cpu2}% ${cpubar cpu2}
+${color orange} 3:${color} ${cpu cpu3}% ${cpubar cpu3}
+${color orange} 4:${color} ${cpu cpu4}% ${cpubar cpu4}
+${color orange} 5:${color} ${cpu cpu5}% ${cpubar cpu5}
+${color orange} 6:${color} ${cpu cpu6}% ${cpubar cpu6}
+${color orange} 7:${color} ${cpu cpu7}% ${cpubar cpu7}
+${color orange} 8:${color} ${cpu cpu8}% ${cpubar cpu8}
+${color orange} 9:${color} ${cpu cpu9}% ${cpubar cpu9}
+${color orange}10:${color} ${cpu cpu10}% ${cpubar cpu10}
+${color orange}11:${color} ${cpu cpu11}% ${cpubar cpu11}
+${color orange}12:${color} ${cpu cpu12}% ${cpubar cpu12}
+${color orange}13:${color} ${cpu cpu13}% ${cpubar cpu13}
+${color orange}14:${color} ${cpu cpu14}% ${cpubar cpu14}
+${color orange}15:${color} ${cpu cpu15}% ${cpubar cpu15}
+${color orange}16:${color} ${cpu cpu16}% ${cpubar cpu16}
+${color orange}17:${color} ${cpu cpu17}% ${cpubar cpu17}
+${color orange}18:${color} ${cpu cpu18}% ${cpubar cpu18}
+${color orange}19:${color} ${cpu cpu19}% ${cpubar cpu19}
+${color orange}20:${color} ${cpu cpu20}% ${cpubar cpu20}
+${color orange}21:${color} ${cpu cpu21}% ${cpubar cpu21}
+${color orange}22:${color} ${cpu cpu22}% ${cpubar cpu22}
+${color orange}23:${color} ${cpu cpu23}% ${cpubar cpu23}
+${color orange}24:${color} ${cpu cpu24}% ${cpubar cpu24}
+${cpugraph}
+${color orange}Name $alignr PID   CPU%   MEM%
+${color lightgrey} ${top name 1} $alignr ${top pid 1} ${top cpu 1} ${top mem 1}
+${color lightgrey} ${top name 2} $alignr ${top pid 2} ${top cpu 2} ${top mem 2}
+${color lightgrey} ${top name 3} $alignr ${top pid 3} ${top cpu 3} ${top mem 3}
+${color lightgrey} ${top name 4} $alignr ${top pid 4} ${top cpu 4} ${top mem 4}
+${color lightgrey} ${top name 5} $alignr ${top pid 5} ${top cpu 5} ${top mem 5}
+${color orange}Load average: ${color}${loadavg}
+${color orange}Processes: ${color}${processes}
+${color orange}Running:${color} ${running_processes}
+${hr}
+${color orange}RAM:  ${color}${mem}/${memmax}
+${memperc}% ${membar 4}
+${color orange}Swap: ${color}${swap}/${swapmax}
+${swapperc}% ${swapbar 4}
+${memgraph}
+${hr}
+${color orange}/     ${color}${fs_used /}/${fs_size /} ${fs_bar 6 /}
+${color orange}SSD0:  ${execi 5 nvme smart-log /dev/nvme0 | grep temperature | cut -c 16-19 } ℃
+${color orange}/home ${color}${fs_used /home}/${fs_size /home} ${fs_bar 6 /home}
+${color orange}SSD1:  ${execi 5 nvme smart-log /dev/nvme1 | grep temperature | cut -c 16-19 } ℃
+${hr}
+${if_up enp9s0}
+${color orange}IP:   ${color}${addr enp9s0}
+${color orange}Up:   ${color}${upspeed enp9s0} ${color orange}Down: ${color}${downspeed enp9s0}
+${upspeedgraph enp9s0 32,200 000000 ffffff} ${downspeedgraph enp9s0 32,200 000000 ffffff}
+${endif}
+${if_up enxbc5c4c5be981}
+${color orange}IP:   ${color}${addr enxbc5c4c5be981}
+${color orange}Up:   ${color}${upspeed enxbc5c4c5be981} ${color orange}Down: ${color}${downspeed enxbc5c4c5be981}
+${upspeedgraph enxbc5c4c5be981 32,200 000000 ffffff} ${downspeedgraph enxbc5c4c5be981 32,200 000000 ffffff}
+${endif}
+]]
