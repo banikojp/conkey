@@ -7,7 +7,8 @@ conky.config = {
   font = 'Migu 1M DejaVu Sans Mono:bold:size=11',
   use_xft = true,
   alignment = 'top_right',
-  gap_x = 0,
+  xinerama_head = 0,
+  gap_x = 20,
   gap_y = 40,
   own_window_argb_visual = true,
   own_window_argb_value = 50,
@@ -15,9 +16,13 @@ conky.config = {
   own_window_hints = 'undecorated,below,skip_taskbar,skip_pager,sticky',
   own_window = true,
   update_interval = 3.0,
+  default_graph_height = 80,
+  default_graph_width = 0,
 }
 
 conky.text = [[
+${time %Y-%m-%d %A}
+${alignr}${font heavy:size=64}${time %k:%M}${font}
 ${color orange}Hostname: ${color}${nodename}
 ${color orange}Kernel:   ${color}${sysname} ${kernel} on ${machine}
 ${color orange}Uptime:   ${color}${uptime}
@@ -26,31 +31,8 @@ ${hr}
 ${color orange}CPU:${color} ${freq_g} GHz
 ${color orange}CPU Temp:${color} ${execi 5 sensors | grep Tctl | cut -c 15-19} ℃
 ${color orange}CPU usage:${color} ${cpu}%
-${color orange} 1:${color} ${cpu cpu1}% ${cpubar cpu1}
-${color orange} 2:${color} ${cpu cpu2}% ${cpubar cpu2}
-${color orange} 3:${color} ${cpu cpu3}% ${cpubar cpu3}
-${color orange} 4:${color} ${cpu cpu4}% ${cpubar cpu4}
-${color orange} 5:${color} ${cpu cpu5}% ${cpubar cpu5}
-${color orange} 6:${color} ${cpu cpu6}% ${cpubar cpu6}
-${color orange} 7:${color} ${cpu cpu7}% ${cpubar cpu7}
-${color orange} 8:${color} ${cpu cpu8}% ${cpubar cpu8}
-${color orange} 9:${color} ${cpu cpu9}% ${cpubar cpu9}
-${color orange}10:${color} ${cpu cpu10}% ${cpubar cpu10}
-${color orange}11:${color} ${cpu cpu11}% ${cpubar cpu11}
-${color orange}12:${color} ${cpu cpu12}% ${cpubar cpu12}
-${color orange}13:${color} ${cpu cpu13}% ${cpubar cpu13}
-${color orange}14:${color} ${cpu cpu14}% ${cpubar cpu14}
-${color orange}15:${color} ${cpu cpu15}% ${cpubar cpu15}
-${color orange}16:${color} ${cpu cpu16}% ${cpubar cpu16}
-${color orange}17:${color} ${cpu cpu17}% ${cpubar cpu17}
-${color orange}18:${color} ${cpu cpu18}% ${cpubar cpu18}
-${color orange}19:${color} ${cpu cpu19}% ${cpubar cpu19}
-${color orange}20:${color} ${cpu cpu20}% ${cpubar cpu20}
-${color orange}21:${color} ${cpu cpu21}% ${cpubar cpu21}
-${color orange}22:${color} ${cpu cpu22}% ${cpubar cpu22}
-${color orange}23:${color} ${cpu cpu23}% ${cpubar cpu23}
-${color orange}24:${color} ${cpu cpu24}% ${cpubar cpu24}
 ${cpugraph}
+${hr}
 ${color orange}Name $alignr PID   CPU%   MEM%
 ${color lightgrey} ${top name 1} $alignr ${top pid 1} ${top cpu 1} ${top mem 1}
 ${color lightgrey} ${top name 2} $alignr ${top pid 2} ${top cpu 2} ${top mem 2}
